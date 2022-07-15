@@ -34,7 +34,7 @@ include("connection.php");
         <body>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-offset-1 col-sm-10 contactForm">
+                    <div class="offset-sm-1 col-sm-10 contactForm">
                         <h1>Update email</h1>
 <?php
 // if email, new email or activation key is missing show an error
