@@ -23,7 +23,7 @@ include("rememberme.php");
     <link rel="icon" type="image/png" sizes="16x16" href="fonts/favicon-16x16.png">
     <link rel="manifest" href="fonts/site.webmanifest">
 
-    <title>Online Notes</title>
+    <title>Ride Sharing Website</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -37,37 +37,7 @@ include("rememberme.php");
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header"> 
-                <a class="navbar-brand">Online Notes</a>
-                <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbarCollapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Contact us</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#loginModal" data-toggle="modal">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  
-        <!-- Jumbotron with Sign Button -->
-        <div class="jumbotron" id="myContainer">
-            <h1>Online Notes App</h1>
-            <p>Your notes with you wherever you go.</p>
-            <p>Easy to use, protects all your notes.</p>
-            <button type="button" class="btn btn-lg green" id="signupButton" data-toggle="modal" data-target="#signupModal">Sign up!</button>
-        </div>
+    
 
         <!-- Login form -->
         <form method="post" id="loginForm">

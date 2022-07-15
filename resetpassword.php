@@ -10,36 +10,36 @@ include("connection.php");
 
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-            <title>Password Reset</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Password Reset</title>
 
-            <!-- Bootstrap -->
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-            <style>
-                h1{
-                    color:purple;
-                }
-                h3{
-                    color:lightgreen;
-                }
-                .contactForm{
-                    border:1px solid purple;
-                    margin-top:50px;
-                    border-radius:15px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="offset-sm-1 col-sm-10 contactForm">
-                        <h1>Reset Password</h1>
-                        <div id="resultmessage"></div>
+        <style>
+            h1{
+                color:purple;
+            }
+            h3{
+                color:lightgreen;
+            }
+            .contactForm{
+                border:1px solid purple;
+                margin-top:50px;
+                border-radius:15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10 contactForm">
+                    <h1>Reset Password</h1>
+                    <div id="resultmessage"></div>
 <?php 
 // user_id or key1 missing 
 if(!isset($_GET["user_id"])||!isset($_GET["key"])){
@@ -92,34 +92,35 @@ echo "
 </form>
 ";
 ?>
-                    </div>
                 </div>
             </div>
-            <!-- script for ajax call to storeresetpassword.php which processes form data  -->
-            <script>                
-                //form submited
-                $("#passwordreset").submit(function(event){    
-                    //prevent default php processing
-                    event.preventDefault();
-                    //collect users inputs
-                    var datatopost=$(this).serializeArray();
-                    //send them to forgot-password.php using ajax
-                    $.ajax({
-                        url:"storeresetpassword.php",
-                        type:"POST",
-                        data: datatopost,
-                        success:function(data){
-                            $("#resultmessage").html(data);
-                        },
-                        error: function(){
-                            //ajax call fails: show ajax call error
-                            $("#resultmessage").html("<div class='alert alert-danger'>Ajax call error</div>");
-                        }
-                    });
+        </div>
+        <!-- script for ajax call to storeresetpassword.php which processes form data  -->
+        <script>                
+            //form submited
+            $("#passwordreset").submit(function(event){    
+                //prevent default php processing
+                event.preventDefault();
+                //collect users inputs
+                var datatopost=$(this).serializeArray();
+                //send them to forgot-password.php using ajax
+                $.ajax({
+                    url:"storeresetpassword.php",
+                    type:"POST",
+                    data: datatopost,
+                    success:function(data){
+                        $("#resultmessage").html(data);
+                    },
+                    error: function(){
+                        //ajax call fails: show ajax call error
+                        $("#resultmessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+                    }
                 });
-            </script>
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        </body>
+            });
+        </script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    </body>
+</html>

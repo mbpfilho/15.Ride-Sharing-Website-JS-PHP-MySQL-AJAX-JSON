@@ -128,28 +128,8 @@ if($count==1){
 
     <!-- container -->
     <div class="container" id="container">
-        <!-- alert message -->
-        <div id="alert" class="alert alert-danger collapse">
-            <a class="close" data-dismiss="alert" href="#">&times;</a>
-            <p id="alertContent"></p>
-        </div>
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-                <div id="buttons">
-                    <button id="addNote" type="button" class="btn btn-info btn-lg">Add Note</button>
-                    <button id="edit" type="button" class="btn btn-info btn-lg pull-right">Edit</button>
-                    <button id="done" type="button" class="btn green btn-lg pull-right">Done</button>
-                    <button id="allNotes" type="button" class="btn btn-info btn-lg">All Notes</button>
-                </div>
-
-                <div id="notePad">
-                    <textarea rows="10"></textarea>
-                </div>
-
-                <div id="notes" class="notes">
-                    <!-- ajax call to php file -->
-                </div>
-            </div>
+            
         </div>
     </div>
 
@@ -165,6 +145,6 @@ if($count==1){
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <!-- link to mynotes.js -->
-    <script src="mynotes.js"></script>
+    <script src="mytrips.js"></script>
   </body>
 </html>
