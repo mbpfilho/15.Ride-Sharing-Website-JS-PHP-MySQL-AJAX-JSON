@@ -87,17 +87,23 @@ echo "
     <div class='form-group'>
         <label for='password'>Enter your new password</label>
         <input type='password' name='password' id='password' placeholder='Enter Password' class='form-control'>
+    </div>
     <div class='form-group'>
         <label for='password2'>Re-enter Password</label>
         <input type='password' name='password2' id='password2' placeholder='Re-enter Password' class='form-control'>
-        <input type='submit' name='resetpassword' class='btn btn-success btn-lg' value='Reset Password'>
     </div>
+    <input type='submit' name='resetpassword' class='btn btn-success btn-lg' value='Reset Password'>
 </form>
 ";
 ?>
                 </div>
             </div>
         </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
         <!-- script for ajax call to storeresetpassword.php which processes form data  -->
         <script>                
             //form submited
@@ -121,10 +127,6 @@ echo "
                 });
             });
         </script>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     </body>
 </html>
 

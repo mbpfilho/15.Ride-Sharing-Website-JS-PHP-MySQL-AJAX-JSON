@@ -29,7 +29,7 @@ include('connection.php');
         </style> 
 
     </head>
-        <body>
+    <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-offset-1 col-sm-10 contactForm">
@@ -75,14 +75,9 @@ echo "
     <input type='password' name='password2' id='password2' placeholder='Re-enter Password' class='form-control'>
 </div>
 <input type='submit' name='resetpassword' class='btn btn-success btn-lg' value='Reset Password'>
-
-
 </form>
 ";
-
-
-?>
-            
+?>            
         </div>
     </div>
 </div>
