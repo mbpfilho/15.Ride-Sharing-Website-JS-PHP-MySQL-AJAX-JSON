@@ -48,3 +48,5 @@ CREATE TABLE carsharetrips(
     saturday CHAR(1), 
     sunday CHAR(1)
 )
+
+CREATE USER notes IDENTIFIED BY "LczW(-Zm-]ZR!5Ak"

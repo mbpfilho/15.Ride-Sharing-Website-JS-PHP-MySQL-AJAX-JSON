@@ -103,7 +103,7 @@ if($count==1){
     <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header"> 
-                <a class="navbar-brand">Online Notes</a>
+                <a class="navbar-brand">Ride Sharing</a>
                 <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -113,13 +113,14 @@ if($count==1){
             </div>
             <div class="navbar-collapse collapse" id="navbarCollapse">
                 <ul class="nav navbar-nav">
+                    <li><a href="index.php">Search</a></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="#">Help</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li class="active"><a href="#">My Notes</a></li>
+                    <li class="active"><a href="#">My Trips</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logged in as <b><?php echo $username;?></b></a></li>
+                    <li><a href="#"><?php echo $_SESSION["username"];?></a></li>
                     <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
             </div>
