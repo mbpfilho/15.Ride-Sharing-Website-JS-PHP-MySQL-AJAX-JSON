@@ -36,7 +36,7 @@ include("rememberme.php");
     <link rel="stylesheet" href="styling.css">
 
     <!-- google maps api script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr-cTvyLpSsWL7Q9Nlc-RTp1WTDkmJcs"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr-cTvyLpSsWL7Q9Nlc-RTp1WTDkmJcs&libraries=places"></script>
 
   </head>
   <body>
