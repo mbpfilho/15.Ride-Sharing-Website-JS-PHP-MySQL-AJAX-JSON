@@ -34,6 +34,10 @@ include("rememberme.php");
     <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Open+Sans&family=Source+Sans+Pro&family=Vollkorn&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styling.css">
+
+    <!-- google maps api script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr-cTvyLpSsWL7Q9Nlc-RTp1WTDkmJcs"></script>
+
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -63,6 +67,11 @@ include("rememberme.php");
                     </div>
                     <input type="submit" value="Search" class="btn btn-lg blue" name="search">
                 </form>
+
+                <!-- google maps -->
+                <div id="googleMap">
+
+                </div>
             </div>
         </div>
     </div>
@@ -186,6 +195,7 @@ include("rememberme.php");
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script src="map.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

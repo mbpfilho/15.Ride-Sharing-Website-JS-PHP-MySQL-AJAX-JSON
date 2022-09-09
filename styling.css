@@ -51,6 +51,11 @@ body{
   font-weight: bold;
 }
 
+#googleMap{
+  width: 100%;
+  height: 30vh;
+  margin: 10px auto;
+}
 
 /*Navigation bar*/
 .navbar-custom{
