@@ -22,10 +22,10 @@ body{
 #signup{
   margin-top: 50px;
 }
-.green{
+.blue{
   background-color: rgba(81,162,180,.8);
 }
-.green:hover{
+.blue:hover{
   background-color: rgba(81,162,180);
 }
 
@@ -39,11 +39,24 @@ body{
   border: 1px solid #eeeeee;
 }
 
+#myContainer{
+  margin-top: 50px;
+  text-align: center;
+  color: black;
+}
+#myContainer h1{
+  font-size: 4em;
+}
+#myContainer .bold{
+  font-weight: bold;
+}
+
+
 /*Navigation bar*/
 .navbar-custom{
   background-color: #51a2b4;
   border-color: #eeeeee;
-  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#ffffff));
+  /* background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ffffff), to(#ffffff)); */
   background-image: -webkit-linear-gradient(top, #ffffff, 0%, #ffffff, 100%);
   background-image: -moz-linear-gradient(top, #ffffff 0%, #ffffff 100%);
   background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);

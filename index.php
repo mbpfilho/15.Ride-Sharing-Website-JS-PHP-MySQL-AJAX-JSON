@@ -33,7 +33,7 @@ include("rememberme.php");
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Open+Sans&family=Source+Sans+Pro&family=Vollkorn&display=swap" rel="stylesheet">
 
-    <link href="styling.css" rel="stylesheet">
+    <link rel="stylesheet" href="styling.css">
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -45,6 +45,27 @@ include("rememberme.php");
     }
     ?>
     
+    <div class="container-fluid" id="myContainer">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Plan your next trip now!</h1>
+                <p class="lead">Save Money! Save the Environment!</p>
+                <p class="bold">You can save up to 3000$ a year using Ride Sharing!</p>
+                <!-- search form -->
+                <form class="form-inline" id="searchForm" action="" method="get">
+                    <div class="form-group">
+                        <label class="sr-only" for="departure">Departure:</label>
+                        <input type="text" name="departure" id="departure" placeholder="Departure">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="destination">Destination:</label>
+                        <input type="text" name="destination" id="destination" placeholder="Destination">
+                    </div>
+                    <input type="submit" value="Search" class="btn btn-lg blue" name="search">
+                </form>
+            </div>
+        </div>
+    </div>
 
         <!-- Login form -->
         <form method="post" id="loginForm">
@@ -79,7 +100,7 @@ include("rememberme.php");
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input class="btn green" name="login" type="submit" value="Login">
+                        <input class="btn blue" name="login" type="submit" value="Login">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">Register</button>
                     </div>
@@ -118,7 +139,7 @@ include("rememberme.php");
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input class="btn green" name="signup" type="submit" value="Sign up">
+                        <input class="btn blue" name="signup" type="submit" value="Sign up">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
@@ -145,7 +166,7 @@ include("rememberme.php");
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input class="btn green" name="forgotpassword" type="submit" value="Submit">
+                        <input class="btn blue" name="forgotpassword" type="submit" value="Submit">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal" data-target="signupModal" data-toggle="modal">Register</button>
                     </div>
