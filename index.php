@@ -68,10 +68,15 @@ include("rememberme.php");
                     <input type="submit" value="Search" class="btn btn-lg blue" name="search">
                 </form>
 
-                <!-- google maps -->
-                <div id="googleMap">
+                <!-- google map -->
+                <div id="googleMap"></div>
 
-                </div>
+                <!-- singup button -->
+                <?php
+                if(!isset($_SESSION["user_id"])){
+                    echo "<button class='btn btn-lg blue' id='signup' data-toggle='modal' data-target='#signupModal'>Free Sign up</button>";
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -135,6 +140,14 @@ include("rememberme.php");
                             <input class="form-control" id="username" type="text" name="username" placeholder="Username" maxlength="30">
                         </div>
                         <div class="form-group">
+                            <label for="firstname" class="sr-only">Firstname</label>
+                            <input class="form-control" id="firstname" type="text" name="firstname" placeholder="Firstname" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="sr-only">Lastname</label>
+                            <input class="form-control" id="lastname" type="text" name="lastname" placeholder="Lastname" maxlength="30">
+                        </div>
+                        <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input class="form-control" id="email" type="email" name="email" placeholder="Email Address" maxlength="50">
                         </div>
@@ -145,6 +158,18 @@ include("rememberme.php");
                         <div class="form-group">
                             <label for="password2" class="sr-only">Confirm password</label>
                             <input class="form-control" id="password2" type="password" name="password2" placeholder="Confirm password" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label for="phonenumber" class="sr-only">Telephone</label>
+                            <input class="form-control" id="phonenumber" type="text" name="phonenumber" placeholder="Telephone Number" maxlength="30">
+                        </div>
+                        <div class="form-group">
+                            <label for=""><input type="radio" name="gender" id="male" value="male">Male</label>
+                            <label for=""><input type="radio" name="gender" id="female" value="female">Female</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="moreinformation">Comments:</label>
+                            <textarea name="moreinformation" class="form-control" id="moreinformation" rows="4" maxlength="300"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -20,7 +20,8 @@ body{
 
 /*buttons*/
 #signup{
-  margin-top: 50px;
+  margin: 30px auto;
+  
 }
 .blue{
   background-color: rgba(81,162,180,.8);
