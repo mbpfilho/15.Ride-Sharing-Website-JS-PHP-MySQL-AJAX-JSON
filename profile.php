@@ -71,6 +71,16 @@ $email=$_SESSION["email"];
         tr{
             cursor: pointer;
         }
+
+        .preview{
+            height: 20px;
+            border-radius: 50%;
+        }
+        .preview2{
+            height: 200px;
+            max-width: 100%;
+            border-radius: 50%;
+        }
     </style>
   </head>
   <body>
@@ -95,6 +105,7 @@ $email=$_SESSION["email"];
                     <li><a href="mainpage.php">My Trips</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><div data-toggle="modal" data-target="#updatepicture"><img class="preview" src="cn.jpg" alt="profile picture"></div></a></li>
                     <li><a href="#"><?php echo $username;?></a></li>
                     <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
@@ -210,6 +221,36 @@ $email=$_SESSION["email"];
                     <div class="form-group">
                         <label for="password2" class="sr-only">Confirm password:</label>
                         <input class="form-control" id="password2" type="password" name="password2" maxlength="30" placeholder="Confirm password">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input class="btn green" name="updateusername" type="submit" value="Submit">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- update picture form -->
+    <form method="post" id="updatepictureform">
+        <div class="modal" id="updatepicture" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 id="myModalLabel">Update Picture:</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- update picture message from php file -->
+                    <div id="updatepicturemessage"></div>
+
+                    <div><img class="preview2" src="cn.jpg" alt="profile picture"></div>
+
+                    <div class="form-group">
+                        <label for="picture">Select a picture:</label>
+                        <input id="picture" type="file" name="picture">
                     </div>
 
                 </div>
