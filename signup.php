@@ -12,6 +12,12 @@ $missingPassword = '<p><strong>Please enter a Password!</strong></p>';
 $invalidPassword = '<p><strong>Your password should be at least 6 characters long and include one capital letter, one lowercase letter and one number!</strong></p>';
 $differentPassword = '<p><strong>Passwords don\'t match!</strong></p>';
 $missingPassword2 = '<p><strong>Please confirm your password</strong></p>';
+$missingfirstname = '<p><strong>Please enter your firstname</strong></p>';
+$missinglastname = '<p><strong>Please enter your lastname</strong></p>';
+$missinggender = '<p><strong>Please select your gender</strong></p>';
+$missingPhone = '<p><strong>Please enter your phone number </strong></p>';
+$missinginformation = '<p><strong>Please share a few words about yourself</strong></p>';
+$invalidPhoneNumber = '<p><strong>Please enter a valid phone number (up to 15 digits)</strong></p>';
 $errors="";
 //     get username email password password2     store errors en errors varable
 //get username
@@ -19,6 +25,20 @@ if(empty($_POST["username"])){
     $errors.=$missingUsername;
 }else{
     $username=htmlspecialchars($_POST["username"]);
+}
+
+//get firstname
+if(empty($_POST["firstname"])){
+    $errors.=$missingfirstname;
+}else{
+    $firstname=htmlspecialchars($_POST["firstname"]);
+}
+
+//get lastname
+if(empty($_POST["lastname"])){
+    $errors.=$missinglastname;
+}else{
+    $lastname=htmlspecialchars($_POST["lastname"]);
 }
 
 //get email
@@ -47,6 +67,30 @@ if(empty($_POST["password"])){
         }
     }
 }
+
+//get phone number
+if(empty($_POST["phonenumber"])){
+    $errors.=$missingPhone;
+}elseif(preg_match("/\D/",$_POST["phonenumber"])){
+    $errors.=$invalidPhoneNumber;
+}else{
+    $phonenumber=htmlspecialchars($_POST["phonenumber"]);
+}
+
+//get gender
+if(empty($_POST["gender"])){
+    $errors.=$missinggender;
+}else{
+    $gender=$_POST["gender"];
+}
+
+//get moreinformation
+if(empty($_POST["moreinformation"])){
+    $errors.=$missinginformation;
+}else{
+    $moreinformation=htmlspecialchars($_POST["moreinformation"]);
+}
+
 //     if ther are, print errors
 if($errors){
     $resultMessage="<div class='alert alert-danger'>$errors</div>";
@@ -60,7 +104,10 @@ $email=mysqli_real_escape_string($link,$email);
 $password=mysqli_real_escape_string($link,$password);
 // $password=md5($password); //128 bits -> 32 characters
 $password=hash("sha256",$password); //256 bits -> 64 characters
-
+$firstname=mysqli_real_escape_string($link,$firstname);
+$lastname=mysqli_real_escape_string($link,$lastname);
+$phonenumber=mysqli_real_escape_string($link,$phonenumber);
+$moreinformation=mysqli_real_escape_string($link,$moreinformation);
 //     if username exists in users table, print error
 $sql="SELECT * FROM users WHERE username='$username'";
 $result=mysqli_query($link,$sql);
@@ -91,7 +138,7 @@ if($results){
 $activationKey=bin2hex(openssl_random_pseudo_bytes(16));
 
 //             insert user details and activation code in users table
-$sql="INSERT INTO users (username,email,password,activation,activationkey) VALUES ('$username','$email','$password',FALSE,'$activationKey')";
+$sql="INSERT INTO users (username,email,password,activation,activationkey,first_name,last_name,phonenumber,gender,moreinformation) VALUES ('$username','$email','$password',FALSE,'$activationKey','$firstname','$lastname','$phonenumber','$gender','$moreinformation')";
 $result=mysqli_query($link,$sql);
 if(!$result){
     echo "<div class='alert alert-danger'><p>Error inserting user details in the database.</p><p>".mysqli_error($link)."</p></div>";
