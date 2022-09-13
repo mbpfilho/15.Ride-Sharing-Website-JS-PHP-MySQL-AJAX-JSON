@@ -246,7 +246,7 @@ $email=$_SESSION["email"];
                     <!-- update picture message from php file -->
                     <div id="updatepicturemessage"></div>
 
-                    <div><img class="preview2" src="cn.jpg" alt="profile picture"></div>
+                    <div><img class="preview2" id="preview2" src="cn.jpg"></div>
 
                     <div class="form-group">
                         <label for="picture">Select a picture:</label>
@@ -255,7 +255,7 @@ $email=$_SESSION["email"];
 
                 </div>
                 <div class="modal-footer">
-                    <input class="btn green" name="updateusername" type="submit" value="Submit">
+                    <input class="btn blue" name="updateusername" type="submit" value="Submit">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>

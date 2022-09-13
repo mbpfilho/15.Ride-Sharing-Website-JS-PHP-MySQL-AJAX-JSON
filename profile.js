@@ -72,3 +72,40 @@ $("#updateemailForm").submit(function(event){
         }
     });
 });
+
+//update picture preview
+var file;
+var imageType;
+var imageSize;
+var wrongType;
+$("#picture").change(function(){
+    file=this.files[0];
+    console.log(file);
+    imageType=file.type;
+    imageSize=file.size;
+
+    //check image type
+    var acceptableTypes=["image/jpeg","image/jpg","image/png"];
+    wrongType=($.inArray(imageType,acceptableTypes)==-1);
+    if(wrongType){
+        $("#updatepicturemessage").html("<div class='alert alert-danger'>Only jpeg, jpg and png are accepted</div>");
+        return false;
+    }
+    //check image size
+    if(imageSize>3*1024*1024){
+        $("#updatepicturemessage").html("<div class='alert alert-danger'>Up to 3M image</div>");
+        return false;
+    }
+
+    //the FileReader object will be used to convert our image to a binary string
+    var reader=new FileReader();
+    //callback
+    reader.onload=updatePreview;
+    //strat the read operation -> convert content into a data URL which is passed to the callback
+    reader.readAsDataURL(file);
+});
+
+function updatePreview(event){
+    console.log(event);
+    $("#preview2").attr("src",event.target.result);
+}
