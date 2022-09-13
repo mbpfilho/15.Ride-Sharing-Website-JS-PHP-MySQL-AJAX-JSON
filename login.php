@@ -60,6 +60,7 @@ $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
 $_SESSION["user_id"]=$row["user_id"];
 $_SESSION["username"]=$row["username"];
 $_SESSION["email"]=$row["email"];
+$_SESSION["picture"]=$row["profilepicture"];
 
 //         <!-- check if rememberme is not checked -->
 if(empty($_POST["rememberme"])){

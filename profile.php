@@ -5,6 +5,7 @@ if(!isset($_SESSION["user_id"])){
 }
 $username=$_SESSION["username"];
 $email=$_SESSION["email"];
+$picture=$_SESSION["picture"];
 
 // include("connection.php");
 // $user_id=$_SESSION["user_id"];
@@ -105,7 +106,15 @@ $email=$_SESSION["email"];
                     <li><a href="mainpage.php">My Trips</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><div data-toggle="modal" data-target="#updatepicture"><img class="preview" src="cn.jpg" alt="profile picture"></div></a></li>
+                    <li><a href="#"><div data-toggle="modal" data-target="#updatepicture">
+                        <?php
+                        if(empty($picture)){
+                            echo "<img class='preview' src='profilepicture/cn.jpg' alt='profile picture'>";
+                        }else{
+                            echo "<img class='preview' src='$picture' alt='profile picture'>";
+                        }
+                        ?>  
+                    </div></a></li>
                     <li><a href="#"><?php echo $username;?></a></li>
                     <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
@@ -234,7 +243,7 @@ $email=$_SESSION["email"];
     </form>
 
     <!-- update picture form -->
-    <form method="post" id="updatepictureform">
+    <form method="post" id="updatepictureform" enctype="multipart/form-data">
         <div class="modal" id="updatepicture" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -246,7 +255,13 @@ $email=$_SESSION["email"];
                     <!-- update picture message from php file -->
                     <div id="updatepicturemessage"></div>
 
-                    <div><img class="preview2" id="preview2" src="cn.jpg"></div>
+                    <?php
+                        if(empty($picture)){
+                            echo "<div><img class='preview2' id='preview2' src='profilepicture/cn.jpg'></div>";
+                        }else{
+                            echo "<div><img class='preview2' id='preview2' src='$picture'></div>";
+                        }
+                    ?>  
 
                     <div class="form-group">
                         <label for="picture">Select a picture:</label>

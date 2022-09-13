@@ -109,3 +109,46 @@ function updatePreview(event){
     console.log(event);
     $("#preview2").attr("src",event.target.result);
 }
+
+//update picture
+$("#updatepictureform").submit(function(event){
+    event.preventDefault();
+    
+    //test file missing
+    if(!file){
+        $("#updatepicturemessage").html("<div class='alert alert-danger'>Choose a new picture</div>");
+        return false;
+    }
+
+    //check image type
+    if(wrongType){
+        $("#updatepicturemessage").html("<div class='alert alert-danger'>Only jpeg, jpg and png are accepted</div>");
+        return false;
+    }
+    //check image size
+    if(imageSize>3*1024*1024){
+        $("#updatepicturemessage").html("<div class='alert alert-danger'>Up to 3M image</div>");
+        return false;
+    }
+    
+    //send Ajax call to updatepicture.php
+    $.ajax({
+        url:"updatepicture.php",
+        type:"POST",
+        data: new FormData(this),
+        contentType: false,
+        cache: false,
+        processData: false,
+        success:function(data){
+            if(data){
+                $("#updatepicturemessage").html(data); 
+            }else{
+                location.reload();
+            }
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#updatepicturemessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+        }
+    });
+})
