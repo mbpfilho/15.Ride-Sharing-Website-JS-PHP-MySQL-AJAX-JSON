@@ -47,7 +47,17 @@ if($count==1){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Open+Sans&family=Source+Sans+Pro&family=Vollkorn&display=swap" rel="stylesheet">
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
+    <!-- jquery ui -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/sunny/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- css file -->
     <link href="styling.css" rel="stylesheet">
 
     <!-- google maps api script -->
@@ -154,6 +164,9 @@ if($count==1){
                     <button type="button" class="btn btn-lg blue" data-toggle="modal" data-target="#addtripModal">
                         Add trips
                     </button>
+                    <button type="button" class="btn btn-lg blue" data-toggle="modal" data-target="#edittripModal">
+                        Edit trips
+                    </button>
                 </div>
                 <div id="myTrips" class="trips">
                 <!-- ajax call to php file -->
@@ -216,7 +229,7 @@ if($count==1){
                     
                     <div class="form-group one-off">
                         <label for="date" class="sr-only">Date</label>
-                        <input class="form-control" id="date" name="date" readonly="readonly">
+                        <input class="form-control" id="date" name="date" readonly="readonly" placeholder="Date">
                     </div>
                     
                     <div class="form-group regular one-off time">
@@ -233,6 +246,75 @@ if($count==1){
         </div>
     </form>
 
+    <!-- edit trip form -->
+    <form method="post" id="edittripForm">
+        <div class="modal" id="edittripModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 id="myModalLabel">Edit trip:</h4>
+                </div>
+                <div class="modal-body">
+
+                    <!-- edit trip message from php file -->
+                    <div id="edittripmessage"></div>
+
+                    <div class="form-group">
+                        <label for="departure2" class="sr-only">Departure</label>
+                        <input class="form-control" id="departure2" type="text" name="departure2" placeholder="Departure">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination2" class="sr-only">Destination</label>
+                        <input class="form-control" id="destination2" type="text" name="destination2" placeholder="Destination">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="price2" class="sr-only">Price</label>
+                        <input class="form-control" id="price2" type="number" name="price2" placeholder="Price">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="seatsavailable2" class="sr-only">Seats Available</label>
+                        <input class="form-control" id="seatsavailable2" type="number" name="seatsavailable2" placeholder="Seats Available">
+                    </div>
+
+                    <div class="form-group">
+                        <label for=""><input type="radio" name="regular2" id="yes2" value="Y">Regular</label>
+                        <label for=""><input type="radio" name="regular2" id="no2" value="N">One-off</label>
+                    </div>
+
+                    <div class="checkbox checkbox-inline regular2">
+                        <label for=""><input type="checkbox" name="sunday2" id="sunday2" value="1">Sunday</label>
+                        <label for=""><input type="checkbox" name="monday2" id="monday2" value="1">Monday</label>
+                        <label for=""><input type="checkbox" name="tuesday2" id="tuesday2" value="1">Tuesday</label>
+                        <label for=""><input type="checkbox" name="wednesday2" id="wednesday2" value="1">Wednesday</label>
+                        <label for=""><input type="checkbox" name="thursday2" id="thursday2" value="1">Thursday</label>
+                        <label for=""><input type="checkbox" name="friday2" id="friday2" value="1">Friday</label>
+                        <label for=""><input type="checkbox" name="saturday2" id="saturday2" value="1">Saturday</label>
+                    </div>
+                    
+                    <div class="form-group one-off2">
+                        <label for="date2" class="sr-only">Date</label>
+                        <input class="form-control" id="date2" name="date2" readonly="readonly" placeholder="Date">
+                    </div>
+                    
+                    <div class="form-group regular2 one-off2 time">
+                        <label for="time2" class="sr-only">Time</label>
+                        <input class="form-control" id="time2" type="time" name="time2">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" name="updateTrip" type="submit" value="Edit Trip">
+                    <input class="btn btn-danger" name="deleteTrip" type="button" id="deleteTrip" value="Delete">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+
     <!-- Footer -->
     <div id="footer">
         <div class="container">
@@ -240,10 +322,6 @@ if($count==1){
         </div>
     </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <!-- link to mynotes.js -->
     <script src="mytrips.js"></script>
     <script src="map.js"></script>
