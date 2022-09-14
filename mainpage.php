@@ -50,6 +50,9 @@ if($count==1){
 
     <link href="styling.css" rel="stylesheet">
 
+    <!-- google maps api script -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr-cTvyLpSsWL7Q9Nlc-RTp1WTDkmJcs&libraries=places"></script>
+
     <style>
         #container{
             margin-top: 120px;
@@ -95,6 +98,22 @@ if($count==1){
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+        }
+
+        #googleMap{
+            max-width: 400px;
+            height: 200px;
+            margin: 30px auto;
+        }
+        .modal{
+            z-index: 20;
+        }
+        .modal-backdrop{
+            z-index: 10;
+        }
+
+        .time{
+            margin-top: 10px;
         }
     </style>
   </head>
@@ -156,6 +175,9 @@ if($count==1){
                 <div class="modal-body">
                     <!-- add trip message from php file -->
                     <div id="addtripmessage"></div>
+                    
+                    <!-- google map -->
+                    <div id="googleMap"></div>
 
                     <div class="form-group">
                         <label for="departure" class="sr-only">Departure</label>
@@ -182,7 +204,7 @@ if($count==1){
                         <label for=""><input type="radio" name="regular" id="no" value="N">One-off</label>
                     </div>
 
-                    <div class="checkbox checkbox-inline">
+                    <div class="checkbox checkbox-inline regular">
                         <label for=""><input type="checkbox" name="sunday" id="sunday" value="1">Sunday</label>
                         <label for=""><input type="checkbox" name="monday" id="monday" value="1">Monday</label>
                         <label for=""><input type="checkbox" name="tuesday" id="tuesday" value="1">Tuesday</label>
@@ -192,18 +214,18 @@ if($count==1){
                         <label for=""><input type="checkbox" name="saturday" id="saturday" value="1">Saturday</label>
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group one-off">
                         <label for="date" class="sr-only">Date</label>
                         <input class="form-control" id="date" name="date" readonly="readonly">
                     </div>
                     
-                    <div class="form-group">
+                    <div class="form-group regular one-off time">
                         <label for="time" class="sr-only">Time</label>
                         <input class="form-control" id="time" type="time" name="time">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input class="btn blue" name="signup" type="submit" value="Sign up">
+                    <input class="btn btn-primary" name="createTrip" type="submit" value="Create Trip">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -224,5 +246,6 @@ if($count==1){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <!-- link to mynotes.js -->
     <script src="mytrips.js"></script>
+    <script src="map.js"></script>
   </body>
 </html>
