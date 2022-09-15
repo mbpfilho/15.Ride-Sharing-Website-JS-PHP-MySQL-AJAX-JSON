@@ -95,9 +95,31 @@ function getAddTripDestinationCoordinates(){
             destinationLatitude=results[0].geometry.location.lat();
             data.push({name:'destinationLongitude',value:destinationLongitude});
             data.push({name:'destinationLatitude',value:destinationLatitude});
-            console.log(data);
+            submitAddTripRequest();
         }else{
+            submitAddTripRequest();
         }
     }
     )
+}
+
+function submitAddTripRequest(){
+    //send Ajax call to addtrip.php
+    $.ajax({
+        url:"addtrip.php",
+        type:"POST",
+        data: data,
+        success:function(returnedData){
+            if(returnedData){
+                $("#addtripmessage").html(returnedData);
+                //hide modal
+                //reset form
+                //load trips
+            }
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#addtripmessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+        }
+    });
 }
