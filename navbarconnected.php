@@ -36,7 +36,7 @@ if($count==1){
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><?php echo $username ?></a></li>
-                    <li><a href="logout.php?logout=1" data-toggle="modal">Log out</a></li>
+                    <li><a href="index.php?logout=1" data-toggle="modal">Log out</a></li>
                 </ul>
             </div>
         </div>
