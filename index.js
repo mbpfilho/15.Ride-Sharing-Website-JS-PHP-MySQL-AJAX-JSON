@@ -18,7 +18,7 @@ $("#signupForm").submit(function(event){
         },
         error: function(){
             //ajax call fails: show ajax call error
-            $("#signupMessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+            $("#signupMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
         }
     });
 });
@@ -47,7 +47,7 @@ $("#loginForm").submit(function(event){
         },
         error: function(){
             //ajax call fails: show ajax call error
-            $("#loginMessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+            $("#loginMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
         }
     });
 });
@@ -69,7 +69,7 @@ $("#forgotForm").submit(function(event){
         },
         error: function(){
             //ajax call fails: show ajax call error
-            $("#forgotMessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+            $("#forgotMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
         }
     });
 });

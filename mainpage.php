@@ -38,7 +38,7 @@ if($count==1){
     <link rel="icon" type="image/png" sizes="16x16" href="fonts/favicon-16x16.png">
     <link rel="manifest" href="fonts/site.webmanifest">
 
-    <title>My Notes</title>
+    <title>My Trips</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -117,6 +117,7 @@ if($count==1){
         }
         .modal{
             z-index: 20;
+            margin-top: 36px;
         }
         .modal-backdrop{
             z-index: 10;

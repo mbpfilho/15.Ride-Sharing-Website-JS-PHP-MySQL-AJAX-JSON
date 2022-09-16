@@ -3,7 +3,7 @@ session_start();
 include("connection.php");
 
 //logout
-include("logout.php");
+// include("logout.php");
 
 //remember me
 include("rememberme.php");

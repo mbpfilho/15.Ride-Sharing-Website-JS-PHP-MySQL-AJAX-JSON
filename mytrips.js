@@ -112,14 +112,32 @@ function submitAddTripRequest(){
         success:function(returnedData){
             if(returnedData){
                 $("#addtripmessage").html(returnedData);
+            }else{
                 //hide modal
+                $("#addtripModal").modal('hide');
                 //reset form
+                $("#addtripForm")[0].reset();
                 //load trips
+                getTrips();
             }
         },
         error: function(){
             //ajax call fails: show ajax call error
-            $("#addtripmessage").html("<div class='alert alert-danger'>Ajax call error</div>");
+            $("#addtripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
         }
     });
 }
+
+//get Trips
+function getTrips(){
+    //send Ajax call to gettrips.php
+    $.ajax({
+        url:"gettrips.php",
+        success:function(returnedData){
+                $("#myTrips").html(returnedData);
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#myTrips").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+        }
+    });}

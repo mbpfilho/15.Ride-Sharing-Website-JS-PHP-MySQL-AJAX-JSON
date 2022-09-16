@@ -24,23 +24,15 @@ $price=$_POST["price"];
 $seatsavailable=$_POST["seatsavailable"];
 $time=$_POST["time"];
 $date=$_POST["date"];
-
 $regular=(isset($_POST["regular"]))?$_POST["regular"]:"";
-
 // if(isset($_POST["sunday"])){$sunday=$_POST["sunday"];}
 $sunday=(isset($_POST["sunday"]))?$_POST["sunday"]:"";
-
-if(isset($_POST["monday"])){$monday=$_POST["monday"];}
-
-if(isset($_POST["tuesday"])){$tuesday=$_POST["tuesday"];}
-
-if(isset($_POST["wednesday"])){$wednesday=$_POST["wednesday"];}
-
-if(isset($_POST["thursday"])){$thursday=$_POST["thursday"];}
-
-if(isset($_POST["friday"])){$friday=$_POST["friday"];}
-
-if(isset($_POST["saturday"])){$saturday=$_POST["saturday"];}
+$monday=(isset($_POST["monday"]))?$_POST["monday"]:"";
+$tuesday=(isset($_POST["tuesday"]))?$_POST["tuesday"]:"";
+$wednesday=(isset($_POST["wednesday"]))?$_POST["wednesday"]:"";
+$thursday=(isset($_POST["thursday"]))?$_POST["thursday"]:"";
+$friday=(isset($_POST["friday"]))?$_POST["friday"]:"";
+$saturday=(isset($_POST["saturday"]))?$_POST["saturday"]:"";
 
 //check departure
 if(empty($departure)){
@@ -123,7 +115,7 @@ if($errors){
     //     //query for a one-off trip
     // }
 
-    $sql="INSERT INTO carsharetrips ('user_id','departure','departureLongitude','departureLatitude','destination','destinationLongitude','destinationLatitude','price','seatsavailable','regular','date','time','monday','tuesday','wednesday','thursday','friday','saturday','sunday') VALUES ('$user_id','$departure','$departureLongitude','$departureLatitude','$destination','$destinationLongitude','$destinationLatitude','$price','$seatsavailable','$regular','$date','$time','$monday','$tuesday','$wednesday','$thursday','$friday','$saturday','$sunday')";
+    $sql="INSERT INTO carsharetrips (user_id,departure,departureLongitude,departureLatitude,destination,destinationLongitude,destinationLatitude,price,seatsavailable,regular,date,time,monday,tuesday,wednesday,thursday,friday,saturday,sunday) VALUES ('$user_id','$departure','$departureLongitude','$departureLatitude','$destination','$destinationLongitude','$destinationLatitude','$price','$seatsavailable','$regular','$date','$time','$monday','$tuesday','$wednesday','$thursday','$friday','$saturday','$sunday')";
 
     $result=mysqli_query($link,$sql);
 
