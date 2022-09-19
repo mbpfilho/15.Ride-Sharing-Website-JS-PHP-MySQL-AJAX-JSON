@@ -68,48 +68,6 @@ if($count==1){
             margin-top: 120px;
         }
 
-        #notePad,#allNotes,#done,.delete{
-            display: none;
-        }
-
-        #buttons{
-            margin-bottom: 20px;
-        }
-
-        textarea{
-            width: 100%;
-            max-width: 100%;
-            font-size: 16px;
-            line-height: 1.5em;
-            border-left-width: 20px;
-            border-color: #ca3dd9;
-            color: #ca3dd9;
-            background-color: #fbefff;
-            padding: 10px;
-        }
-
-        .noteheader{
-            border: 1px solid grey;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            padding: 0 10px;
-            background: linear-gradient(#ECEAE7,#FFFFFF);
-        }
-
-        .text {
-            font-size: 20px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
-        .timetext {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
-
         #googleMap{
             max-width: 400px;
             height: 200px;
@@ -125,6 +83,22 @@ if($count==1){
 
         .time{
             margin-top: 10px;
+        }
+
+        .trip{
+            margin: 10px auto;
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 10px;
+            background: linear-gradient(lightgray, white);
+        }
+
+        .departure, .destination, .seatsAvailable{
+            font-size: 1.2em;
+        }
+
+        .price{
+            font-size: 1.6em;
         }
     </style>
   </head>
