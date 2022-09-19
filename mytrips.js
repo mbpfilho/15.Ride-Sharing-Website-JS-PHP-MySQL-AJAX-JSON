@@ -1,3 +1,6 @@
+//get trips
+getTrips();
+
 //create a geocoder object to use geocode googlemaps feature
 var geocoder=new google.maps.Geocoder();
 
