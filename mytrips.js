@@ -60,6 +60,7 @@ var departureLatitude;
 var departureLongitude;
 var destinationLatitude;
 var destinationLongitude;
+var trip;
 
 //click on create trip button
 $("#addtripForm").submit(function(event){
@@ -131,6 +132,8 @@ function submitAddTripRequest(){
     });
 }
 
+function formatModal(){}
+
 //get Trips
 function getTrips(){
     //send Ajax call to gettrips.php
@@ -143,4 +146,35 @@ function getTrips(){
             //ajax call fails: show ajax call error
             $("#myTrips").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
         }
-    });}
+    });
+}
+
+    //click on edit button inside a trip
+    $("#edittripModal").on("show.bs.modal",function(event){
+        $("#edittripmessage").empty();
+
+        //button which opened the modal
+        var invoker=$(event.relatedTarget);
+
+        //ajax call to get details of the trip
+        $.ajax({
+            url:"gettripdetails.php",
+            method:"POST",
+            data:{trip_id:invoker.data("trip_id")},
+            success:function(returnedData){
+                if(returnedData){
+                    if(returnedData=="error"){
+                        $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+                    }else{
+                        trip=JSON.parse(returnedData);
+                        //fill edit trip form using the JSON parsed data
+                        formatModal();
+                    }
+                }
+            },
+            error: function(){
+                //ajax call fails: show ajax call error
+                $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            }
+        });
+    })
