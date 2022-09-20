@@ -132,7 +132,31 @@ function submitAddTripRequest(){
     });
 }
 
-function formatModal(){}
+function formatModal(){
+    $("#departure2").val(trip["departure"]);
+    $("#destination2").val(trip["destination"]);
+    $("#price2").val(trip["price"]);
+    $("#seatsavailable2").val(trip["seatsavailable"]);
+    if(trip["regular"]=="Y"){
+        $("#yes2").prop("checked",true);
+        $("#sunday2").prop("checked",trip["sunday"]=="1");
+        $("#monday2").prop("checked",trip["monday"]=="1");
+        $("#tuesday2").prop("checked",trip["tuesday"]=="1");
+        $("#wednesday2").prop("checked",trip["wednesday"]=="1");
+        $("#thursday2").prop("checked",trip["thursday"]=="1");
+        $("#friday2").prop("checked",trip["friday"]=="1");
+        $("#saturday2").prop("checked",trip["saturday"]=="1");
+        $("input[name='time2']").val(trip["time"]);
+        $(".one-off2").hide();
+        $(".regular2").show();
+    }else{
+        $("#no2").prop("checked",true);
+        $("input[name='date2']").val(trip["date"]);
+        $("input[name='time2']").val(trip["time"]);
+        $(".regular2").hide();
+        $(".one-off2").show();
+    }
+}
 
 //get Trips
 function getTrips(){
