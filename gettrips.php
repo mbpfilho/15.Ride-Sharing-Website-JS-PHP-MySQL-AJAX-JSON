@@ -36,19 +36,19 @@ if($result){
             
             echo"
             <div class='row trip'>
-                <div class='col-sm-8 journey'>
+                <div class='col-xs-8 journey'>
                     <div><span class='departure'>Departure:</span>$departure</div>
                     <div><span class='destination'>Destination:</span>$destination</div>
                     <div class='time'>$time</div>
                     <div>$frequency</div>
                 </div>
-                <div class='col-sm-2'>
+                <div class='col-xs-2'>
                     <div class='price'>$$price</div>
                     <div class='perseat'>Per seat</div>
                     <div class='seatsAvailable'>$seatsAvailable left</div>
                 </div>
-                <div class='col-sm-2'>
-                    <button class='btn btn-lg blue' data-toggle='modal' data-target='#edittripModal' data-trip_id='$trip_id'>Edit</button>
+                <div class='col-xs-2'>
+                    <button class='btn blue' data-toggle='modal' data-target='#edittripModal' data-trip_id='$trip_id'>Edit</button>
                 </div>
             </div>";
         }

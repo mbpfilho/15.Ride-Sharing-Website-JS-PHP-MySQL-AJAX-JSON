@@ -89,7 +89,7 @@ if($count==1){
             margin: 10px auto;
             border: 1px solid gray;
             border-radius: 10px;
-            padding: 10px;
+            padding: 6px;
             background: linear-gradient(lightgray, white);
         }
 
@@ -138,9 +138,6 @@ if($count==1){
                 <div>
                     <button type="button" class="btn btn-lg blue" data-toggle="modal" data-target="#addtripModal">
                         Add trips
-                    </button>
-                    <button type="button" class="btn btn-lg blue" data-toggle="modal" data-target="#edittripModal">
-                        Edit trips
                     </button>
                 </div>
                 <div id="myTrips" class="trips">

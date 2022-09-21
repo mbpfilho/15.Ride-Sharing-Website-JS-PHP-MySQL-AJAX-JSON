@@ -1,3 +1,11 @@
+//define variables
+var data;
+var departureLatitude;
+var departureLongitude;
+var destinationLatitude;
+var destinationLongitude;
+var trip;
+
 //get trips
 getTrips();
 
@@ -55,13 +63,6 @@ $("input[name='date'],input[name='date2']").datepicker({
     showWeek: true
 })
 
-var data;
-var departureLatitude;
-var departureLongitude;
-var destinationLatitude;
-var destinationLongitude;
-var trip;
-
 //click on create trip button
 $("#addtripForm").submit(function(event){
     event.preventDefault();
@@ -81,10 +82,8 @@ function getAddTripDepartureCoordinates(){
             departureLatitude=results[0].geometry.location.lat();
             data.push({name:'departureLongitude',value:departureLongitude});
             data.push({name:'departureLatitude',value:departureLatitude});
-            getAddTripDestinationCoordinates();
-        }else{
-            getAddTripDestinationCoordinates();
         }
+        getAddTripDestinationCoordinates();
     }
     )
 }
@@ -99,10 +98,8 @@ function getAddTripDestinationCoordinates(){
             destinationLatitude=results[0].geometry.location.lat();
             data.push({name:'destinationLongitude',value:destinationLongitude});
             data.push({name:'destinationLatitude',value:destinationLatitude});
-            submitAddTripRequest();
-        }else{
-            submitAddTripRequest();
         }
+        submitAddTripRequest();
     }
     )
 }
@@ -158,6 +155,63 @@ function formatModal(){
     }
 }
 
+function getEditTripDepartureCoordinates(){
+    geocoder.geocode({
+        "address":document.getElementById("departure2").value
+    },
+    function(results,status){
+        if(status==google.maps.GeocoderStatus.OK){
+            departureLongitude=results[0].geometry.location.lng();
+            departureLatitude=results[0].geometry.location.lat();
+            data.push({name:'departureLongitude',value:departureLongitude});
+            data.push({name:'departureLatitude',value:departureLatitude});
+        }
+        getEditTripDestinationCoordinates();
+    }
+    )
+}
+
+function getEditTripDestinationCoordinates(){
+    geocoder.geocode({
+        "address":document.getElementById("destination2").value
+    },
+    function(results,status){
+        if(status==google.maps.GeocoderStatus.OK){
+            destinationLongitude=results[0].geometry.location.lng();
+            destinationLatitude=results[0].geometry.location.lat();
+            data.push({name:'destinationLongitude',value:destinationLongitude});
+            data.push({name:'destinationLatitude',value:destinationLatitude});
+        }
+        submitEditTripRequest();
+    }
+    )
+}
+
+function submitEditTripRequest(){
+    //send Ajax call to addtrip.php
+    $.ajax({
+        url:"updatetrip.php",
+        type:"POST",
+        data: data,
+        success:function(returnedData){
+            if(returnedData){
+                $("#edittripmessage").html(returnedData);
+            }else{
+                //hide modal
+                $("#edittripModal").modal('hide');
+                //reset form
+                $("#edittripForm")[0].reset();
+                //load trips
+                getTrips();
+            }
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+        }
+    });
+}
+
 //get Trips
 function getTrips(){
     //send Ajax call to gettrips.php
@@ -173,32 +227,40 @@ function getTrips(){
     });
 }
 
-    //click on edit button inside a trip
-    $("#edittripModal").on("show.bs.modal",function(event){
-        $("#edittripmessage").empty();
+//click on edit button inside a trip
+$("#edittripModal").on("show.bs.modal",function(event){
+    $("#edittripmessage").empty();
 
-        //button which opened the modal
-        var invoker=$(event.relatedTarget);
+    //button which opened the modal
+    var invoker=$(event.relatedTarget);
 
-        //ajax call to get details of the trip
-        $.ajax({
-            url:"gettripdetails.php",
-            method:"POST",
-            data:{trip_id:invoker.data("trip_id")},
-            success:function(returnedData){
-                if(returnedData){
-                    if(returnedData=="error"){
-                        $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
-                    }else{
-                        trip=JSON.parse(returnedData);
-                        //fill edit trip form using the JSON parsed data
-                        formatModal();
-                    }
+    //ajax call to get details of the trip
+    $.ajax({
+        url:"gettripdetails.php",
+        method:"POST",
+        data:{trip_id:invoker.data("trip_id")},
+        success:function(returnedData){
+            if(returnedData){
+                if(returnedData=="error"){
+                    $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+                }else{
+                    trip=JSON.parse(returnedData);
+                    //fill edit trip form using the JSON parsed data
+                    formatModal();
                 }
-            },
-            error: function(){
-                //ajax call fails: show ajax call error
-                $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
             }
-        });
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+        }
+    });
+
+    $("#edittripForm").submit(function(event){
+        $("#edittripmessage").empty();
+        event.preventDefault();
+        data=$(this).serializeArray();
+        data.push({name:"trip_id",value:invoker.data("trip_id")});
+        getEditTripDepartureCoordinates();
     })
+})
