@@ -73,3 +73,5 @@ $("#forgotForm").submit(function(event){
         }
     });
 });
+
+//submit the search form
