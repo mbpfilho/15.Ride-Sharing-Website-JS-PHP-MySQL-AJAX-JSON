@@ -100,6 +100,11 @@ if($count==1){
         .price{
             font-size: 1.6em;
         }
+
+        #myTrips{
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
     </style>
   </head>
   <body>

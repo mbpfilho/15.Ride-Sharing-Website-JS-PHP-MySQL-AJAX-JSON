@@ -256,6 +256,7 @@ $("#edittripModal").on("show.bs.modal",function(event){
         }
     });
 
+    //submit edit form
     $("#edittripForm").submit(function(event){
         $("#edittripmessage").empty();
         event.preventDefault();
@@ -263,4 +264,26 @@ $("#edittripModal").on("show.bs.modal",function(event){
         data.push({name:"trip_id",value:invoker.data("trip_id")});
         getEditTripDepartureCoordinates();
     })
+
+    //delete a trip
+    $("#deleteTrip").click(function(){
+        //ajax call to to delete a trip
+        $.ajax({
+            url:"deletetrip.php",
+            method:"POST",
+            data:{trip_id:invoker.data("trip_id")},
+            success:function(returnedData){
+                if(returnedData){
+                    $("#edittripmessage").html("<div class='alert alert-danger'><strong>Trip not deleted. Try again.</strong></div>");
+                }else{
+                    $("#edittripModal").modal("hide");
+                    getTrips();
+                }
+            },
+            error: function(){
+                //ajax call fails: show ajax call error
+                $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            }
+        });
+    });
 })
