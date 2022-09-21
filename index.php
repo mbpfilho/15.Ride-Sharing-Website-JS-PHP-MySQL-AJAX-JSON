@@ -55,6 +55,7 @@ include("rememberme.php");
                 <h1>Plan your next trip now!</h1>
                 <p class="lead">Save Money! Save the Environment!</p>
                 <p class="bold">You can save up to 3000$ a year using Ride Sharing!</p>
+                
                 <!-- search form -->
                 <form class="form-inline" id="searchForm" action="" method="get">
                     <div class="form-group">
@@ -77,6 +78,9 @@ include("rememberme.php");
                     echo "<button class='btn btn-lg blue' id='signup' data-toggle='modal' data-target='#signupModal'>Free Sign up</button>";
                 }
                 ?>
+
+                <!-- trips -->
+                <div id="searchResults"></div>
             </div>
         </div>
     </div>

@@ -74,4 +74,64 @@ $("#forgotForm").submit(function(event){
     });
 });
 
+//create a geocoder object to use geocode googlemaps feature
+var geocoder=new google.maps.Geocoder();
+
+var data;
+
 //submit the search form
+$("#searchForm").submit(function(event){
+    event.preventDefault();
+    //collect users inputs
+    data=$(this).serializeArray();
+    getSearchDepartureCoordinates();
+
+})
+
+//define function
+function getSearchDepartureCoordinates(){
+    geocoder.geocode({
+        "address":document.getElementById("departure").value
+    },
+    function(results,status){
+        if(status==google.maps.GeocoderStatus.OK){
+            departureLongitude=results[0].geometry.location.lng();
+            departureLatitude=results[0].geometry.location.lat();
+            data.push({name:'departureLongitude',value:departureLongitude});
+            data.push({name:'departureLatitude',value:departureLatitude});
+        }
+        getSearchDestinationCoordinates();
+    }
+    )
+}
+
+function getSearchDestinationCoordinates(){
+    geocoder.geocode({
+        "address":document.getElementById("destination").value
+    },
+    function(results,status){
+        if(status==google.maps.GeocoderStatus.OK){
+            destinationLongitude=results[0].geometry.location.lng();
+            destinationLatitude=results[0].geometry.location.lat();
+            data.push({name:'destinationLongitude',value:destinationLongitude});
+            data.push({name:'destinationLatitude',value:destinationLatitude});
+        }
+        submitSearchRequest();
+    }
+    )
+}
+
+function submitSearchRequest(){
+    //send Ajax call to addtrip.php
+    $.ajax({
+        url:"search.php",
+        type:"POST",
+        data: data,
+        success:function(returnedData){
+        },
+        error: function(){
+            //ajax call fails: show ajax call error
+            $("#searchResults").html("<div class='alert alert-danger'><strong>Ajax call error.</strong></div>");
+        }
+    });
+}
