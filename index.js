@@ -128,6 +128,7 @@ function submitSearchRequest(){
         type:"POST",
         data: data,
         success:function(returnedData){
+            $("#searchResults").html(returnedData);
         },
         error: function(){
             //ajax call fails: show ajax call error

@@ -58,6 +58,11 @@ body{
   margin: 10px auto;
 }
 
+.noresult{
+  text-align: center;
+  margin-bottom: 50px;
+}
+
 /*Navigation bar*/
 .navbar-custom{
   background-color: #51a2b4;

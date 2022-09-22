@@ -124,6 +124,49 @@ if(!$result){
 }
 
 if(mysqli_num_rows($result)==0){
-    echo "<div class='alert alert-info noresults'>No match!</div>";
+    echo "<div class='alert alert-info noresult'>No match!</div>";
+    exit;
 }
+
+echo "<div class='alert alert-info'>From $departure to $destination.<br>Closest journeys:</div>";
+
+echo "<div id='searchResults'>";
+
+//cycle through the trips
+while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+    //get trip details
+    //check frequency
+    if($row["regular"]=="N"){
+        $frequency="One-off journey";
+        $time=$row["date"]." at ".$row["time"];
+        //check the date
+        $tripDate=DateTime::createFromFormat("D d M, Y",$row["date"]);
+        $todayDate=DateTime::createFromFormat("D d M, Y",date("D d M, Y"));
+        if($tripDate<$todayDate){continue;}
+    }else{
+        $frequency="Regular";
+        $array=[];
+        // if($row["sunday"]==1){array_push($array,"Sun");}
+        // if($row["monday"]==1){array_push($array,"Mon");}
+        // if($row["tuesday"]==1){array_push($array,"Tue");}
+        // if($row["wednesday"]==1){array_push($array,"Wed");}
+        // if($row["thursday"]==1){array_push($array,"Thu");}
+        // if($row["friday"]==1){array_push($array,"Fri");}
+        // if($row["saturday"]==1){array_push($array,"Sat");}
+        $weekdays=["sunday"=>"Sun","monday"=>"Mon","tuesday"=>"Tue","wednesday"=>"Wed","thursday"=>"Thu","friday"=>"Fri","saturday"=>"Sat"];
+        foreach($weekdays as $key=>$value){
+            if($row[$key]==1){
+                array_push($array,$value);
+            }
+        }
+        $time=implode("-",$array)." at ".$row["time"];
+    }
+    $departure=$row["departure"];
+    $destination=$row["destination"];
+    $price=$row["price"];
+    $seatsAvailable=$row["seatsavailable"];
+
+}
+
+echo "</div>";
 ?>
