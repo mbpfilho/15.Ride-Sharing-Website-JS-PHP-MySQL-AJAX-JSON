@@ -95,7 +95,7 @@ $maxLatitudeDestination=$destinationLatitude+$deltaLatitudeDestination;
 if($maxLatitudeDestination>90){$maxLatitudeDestination=90;}
 
 //build query
-$sql="SELECT * FROM carsharetrips WHERE";
+$sql="SELECT * FROM carsharetrips WHERE ";
 
 //departure longitude
 if($departureLngOutOfRange){
@@ -130,7 +130,7 @@ if(mysqli_num_rows($result)==0){
 
 echo "<div class='alert alert-info'>From $departure to $destination.<br>Closest journeys:</div>";
 
-echo "<div id='searchResults'>";
+echo "<div id='tripResults'>";
 
 //cycle through the trips
 while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -161,10 +161,57 @@ while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
         }
         $time=implode("-",$array)." at ".$row["time"];
     }
-    $departure=$row["departure"];
-    $destination=$row["destination"];
+    $tripDeparture=$row["departure"];
+    $tripDestination=$row["destination"];
     $price=$row["price"];
     $seatsAvailable=$row["seatsavailable"];
+
+    //get user_id
+    $person_id=$row["user_id"];
+
+    //run query do get user details
+    $sql2="SELECT * FROM users WHERE user_id='$person_id' LIMIT 1";
+    $result2=mysqli_query($link,$sql2);
+    if(!$result2){
+        echo "ERROR: Unable to execute: $sql2. ". mysqli_error($link); exit;
+    }
+
+    $row2=mysqli_fetch_array($result2,MYSQLI_ASSOC);
+    $firstname=$row2["first_name"];
+    $gender=$row2["gender"];
+    $moreinformation=$row2["moreinformation"];
+    $picture=$row2["profilepicture"];
+    if(isset($_SESSION["user_id"])){
+        $phonenumber=$row2["phonenumber"]; 
+    }else{
+        $phonenumber="Members only. Sign up!"; 
+    }
+    
+    //print trip
+    echo "<h4 class='row'>
+        <div class='col-xs-2'>
+            <div class='driver'>$firstname</div>
+            <div><img class='profile' src='$picture' alt='driver picture'></div>
+        </div>
+        <div class='col-xs-8 journey'>
+            <div><span class='departure'>Departure:</span>$tripDeparture</div>
+            <div><span class='destination'>Destination:</span>$tripDestination</div>
+            <div class='time'>$time</div>
+            <div>$frequency</div>
+        </div>
+        <div class='col-xs-2 journey2'>
+        <div class='price'>$$price</div>
+        <div class='perseat'>Per seat</div>
+        <div class='seatsAvailable'>$seatsAvailable left</div>
+        </div>
+    </h4>
+    <div class='moreinfo'>
+        <div>
+            <div>Gender: $gender</div>
+            <div>&#9742: $phonenumber</div>
+        </div>
+        <div class='about'>About: $moreinformation</div>
+    </div>";
 
 }
 

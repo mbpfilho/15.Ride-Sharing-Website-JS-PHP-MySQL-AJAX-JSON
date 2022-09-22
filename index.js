@@ -122,13 +122,16 @@ function getSearchDestinationCoordinates(){
 }
 
 function submitSearchRequest(){
-    //send Ajax call to addtrip.php
+    //send Ajax call to search.php
     $.ajax({
         url:"search.php",
         type:"POST",
         data: data,
         success:function(returnedData){
             $("#searchResults").html(returnedData);
+            $("#tripResults").accordion({
+                
+            })
         },
         error: function(){
             //ajax call fails: show ajax call error

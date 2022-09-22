@@ -63,6 +63,12 @@ body{
   margin-bottom: 50px;
 }
 
+.profile{
+  height: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
 /*Navigation bar*/
 .navbar-custom{
   background-color: #51a2b4;
