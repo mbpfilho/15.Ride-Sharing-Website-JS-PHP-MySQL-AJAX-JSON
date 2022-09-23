@@ -1,6 +1,10 @@
 //ajax call signup form
 //form submited
-$("#signupForm").submit(function(event){    
+$("#signupForm").submit(function(event){ 
+    //show spinner
+    $("#spinner").show();
+    //hide results
+    $("#signupMessage").hide();   
     //prevent default php processing
     event.preventDefault();
     //collect users inputs
@@ -12,13 +16,21 @@ $("#signupForm").submit(function(event){
         data: datatopost,
         success:function(data){
             if(data){
+                //hide spinner
+                $("#spinner").hide();
                 //ajax calls successful: show error or success message
                 $("#signupMessage").html(data);
+                //show results
+                $("#signupMessage").slideDown(); 
             }
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#signupMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            //show results
+            $("#signupMessage").slideDown(); 
         }
     });
 });
@@ -26,7 +38,11 @@ $("#signupForm").submit(function(event){
 
 //ajax call login form
 //form submited
-$("#loginForm").submit(function(event){    
+$("#loginForm").submit(function(event){   
+    //show spinner
+    $("#spinner").show();
+    //hide results
+    $("#loginMessage").hide();     
     //prevent default php processing
     event.preventDefault();
     //collect users inputs
@@ -41,20 +57,31 @@ $("#loginForm").submit(function(event){
                 //if php files return success:redirect to notes page
                 window.location="mainpage.php";
             }else{
+                //hide spinner
+                $("#spinner").hide();
                 //otherwise show error message
                 $("#loginMessage").html(data);
+                $("#loginMessage").slideDown(); 
             }
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#loginMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            //show results
+            $("#loginMessage").slideDown(); 
         }
     });
 });
 
 //ajax call forgot password form
 //form submited
-$("#forgotForm").submit(function(event){    
+$("#forgotForm").submit(function(event){   
+    //show spinner
+    $("#spinner").show();
+    //hide results
+    $("#forgotMessage").hide();     
     //prevent default php processing
     event.preventDefault();
     //collect users inputs
@@ -65,11 +92,17 @@ $("#forgotForm").submit(function(event){
         type:"POST",
         data: datatopost,
         success:function(data){
+            //hide spinner
+            $("#spinner").hide();
             $("#forgotMessage").html(data);
+            $("#forgotMessage").slideDown(); 
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#forgotMessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            $("#forgotMessage").slideDown(); 
         }
     });
 });
@@ -81,6 +114,11 @@ var data;
 
 //submit the search form
 $("#searchForm").submit(function(event){
+    //show spinner
+    $("#spinner").show();
+    //hide results
+    $("#searchResults").fadeOut();
+
     event.preventDefault();
     //collect users inputs
     data=$(this).serializeArray();
@@ -128,17 +166,25 @@ function submitSearchRequest(){
         type:"POST",
         data: data,
         success:function(returnedData){
+            //hide spinner
+            $("#spinner").hide();
             $("#searchResults").html(returnedData);
             $("#tripResults").accordion({
                 active: false,
                 collapsible:true,
                 heightStyle:"content",
                 icons:false
-            })
+            });
+            //show results
+            $("#searchResults").fadeIn();
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#searchResults").html("<div class='alert alert-danger'><strong>Ajax call error.</strong></div>");
+            //show results
+            $("#searchResults").fadeIn();
         }
     });
 }

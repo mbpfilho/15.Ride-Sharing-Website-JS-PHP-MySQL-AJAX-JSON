@@ -228,6 +228,12 @@ include("rememberme.php");
                 <p>Copyright &copy; 2022-<?php echo date("Y")?></p>
             </div>
         </div>
+
+        <!-- spinner -->
+        <div id="spinner">
+            <img src="Disk.gif" alt="spinner" width="64" height="64">
+            <br>Loading..
+        </div>
     <script src="map.js"></script>
     <script src="index.js"></script>
   </body>

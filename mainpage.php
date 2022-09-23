@@ -299,6 +299,12 @@ if($count==1){
         </div>
     </div>
 
+    <!-- spinner -->
+    <div id="spinner">
+        <img src="Disk.gif" alt="spinner" width="64" height="64">
+        <br>Loading..
+    </div>
+
     <!-- link to mynotes.js -->
     <script src="mytrips.js"></script>
     <script src="map.js"></script>

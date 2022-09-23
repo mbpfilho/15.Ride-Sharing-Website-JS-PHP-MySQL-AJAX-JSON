@@ -114,6 +114,19 @@ body{
   font-size: 1.3em;
 }
 
+#spinner{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 85px;
+  margin: auto;
+  text-align: center;
+  z-index: 1100;
+}
+
 
 /*Navigation bar*/
 .navbar-custom{
