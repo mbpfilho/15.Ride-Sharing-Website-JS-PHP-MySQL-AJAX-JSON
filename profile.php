@@ -72,11 +72,7 @@ $picture=$_SESSION["picture"];
         tr{
             cursor: pointer;
         }
-
-        .preview{
-            height: 20px;
-            border-radius: 50%;
-        }
+        
         .preview2{
             height: 200px;
             max-width: 100%;

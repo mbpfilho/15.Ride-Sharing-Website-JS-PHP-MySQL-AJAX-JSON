@@ -19,6 +19,7 @@ if($count==1){
     $email=$row["email"];
     $_SESSION["username"]=$username;
     $_SESSION["email"]=$email;
+    $_SESSION["picture"]=$row["profilepicture"];
 }else{
     echo"Error retrieving username and email from the database";
 }
@@ -129,7 +130,16 @@ if($count==1){
                     <li class="active"><a href="#">My Trips</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><?php echo $_SESSION["username"];?></a></li>
+                    <li><a href="#"><div data-toggle="modal" data-target="#updatepicture">
+                        <?php
+                        if(empty($picture)){
+                            echo "<img class='preview' src='profilepicture/cn.jpg' alt='profile picture'>";
+                        }else{
+                            echo "<img class='preview' src='$picture' alt='profile picture'>";
+                        }
+                        ?>  
+                    </div></a></li>
+                    <li><a href="#"><?php echo $username;?></a></li>
                     <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
             </div>

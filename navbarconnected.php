@@ -1,17 +1,20 @@
 <?php
-$user_id=$_SESSION["user_id"];
+session_start();
 
-//get username
-$sql="SELECT * FROM users WHERE user_id='$user_id'";
-$result=mysqli_query($link,$sql);
-$count=mysqli_num_rows($result);
+$username=$_SESSION["username"];
+$picture=$_SESSION["picture"];
 
-if($count==1){
-    $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $username=$row["username"];
-}else{
-    echo "<div class='alert alert-danger'>Error retriving the username.</div>";
-}
+// //get username
+// $sql="SELECT * FROM users WHERE user_id='$user_id'";
+// $result=mysqli_query($link,$sql);
+// $count=mysqli_num_rows($result);
+
+// if($count==1){
+//     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+//     $username=$row["username"];
+// }else{
+//     echo "<div class='alert alert-danger'>Error retriving the username.</div>";
+// }
 ?>
 
 
@@ -35,8 +38,17 @@ if($count==1){
                     <li><a href="mainpage.php">My Trips</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><?php echo $username ?></a></li>
-                    <li><a href="index.php?logout=1" data-toggle="modal">Log out</a></li>
+                    <li><a href="#"><div data-toggle="modal" data-target="#updatepicture">
+                        <?php
+                        if(empty($picture)){
+                            echo "<img class='preview' src='profilepicture/cn.jpg' alt='profile picture'>";
+                        }else{
+                            echo "<img class='preview' src='$picture' alt='profile picture'>";
+                        }
+                        ?>  
+                    </div></a></li>
+                    <li><a href="#"><?php echo $username;?></a></li>
+                    <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
             </div>
         </div>

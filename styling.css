@@ -127,6 +127,13 @@ body{
   z-index: 1100;
 }
 
+.preview{
+  margin: 0;
+  padding: 0;
+  max-height: 18px;
+  border-radius: 50%;
+}
+
 
 /*Navigation bar*/
 .navbar-custom{
