@@ -64,7 +64,11 @@ $("input[name='date'],input[name='date2']").datepicker({
 })
 
 //click on create trip button
-$("#addtripForm").submit(function(event){
+$("#addtripForm").submit(function(event){ 
+    //show spinner
+    $("#spinner").show();
+    //hide results
+    $("#addtripmessage").hide();   
     event.preventDefault();
     data=$(this).serializeArray();
     // console.log(data);
@@ -111,8 +115,11 @@ function submitAddTripRequest(){
         type:"POST",
         data: data,
         success:function(returnedData){
+            //hide spinner
+            $("#spinner").hide();
             if(returnedData){
                 $("#addtripmessage").html(returnedData);
+                $("#addtripmessage").slideDown();
             }else{
                 //hide modal
                 $("#addtripModal").modal('hide');
@@ -126,8 +133,11 @@ function submitAddTripRequest(){
             }
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#addtripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            $("#addtripmessage").slideDown();
         }
     });
 }
@@ -197,8 +207,11 @@ function submitEditTripRequest(){
         type:"POST",
         data: data,
         success:function(returnedData){
+            //hide spinner
+            $("#spinner").hide();
             if(returnedData){
                 $("#edittripmessage").html(returnedData);
+                $("#edittripmessage").slideDown();
             }else{
                 //hide modal
                 $("#edittripModal").modal('hide');
@@ -214,21 +227,32 @@ function submitEditTripRequest(){
         error: function(){
             //ajax call fails: show ajax call error
             $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            $("#edittripmessage").slideDown();
         }
     });
 }
 
 //get Trips
-function getTrips(){
+function getTrips(){ 
+    //show spinner
+    $("#spinner").show(); 
+    //hide trips
+    $("#myTrips").hide();
     //send Ajax call to gettrips.php
     $.ajax({
         url:"gettrips.php",
         success:function(returnedData){
+            //hide spinner
+            $("#spinner").hide();
                 $("#myTrips").html(returnedData);
+                $("#myTrips").fadeIn();
         },
         error: function(){
+            //hide spinner
+            $("#spinner").hide();
             //ajax call fails: show ajax call error
             $("#myTrips").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+            $("#myTrips").fadeIn();
         }
     });
 }
@@ -263,8 +287,12 @@ $("#edittripModal").on("show.bs.modal",function(event){
     });
 
     //submit edit form
-    $("#edittripForm").submit(function(event){
-        $("#edittripmessage").empty();
+    $("#edittripForm").submit(function(event){ 
+        //show spinner
+        $("#spinner").show();
+        //hide results
+        $("#edittripmessage").hide();   
+        // $("#edittripmessage").empty();
         event.preventDefault();
         data=$(this).serializeArray();
         data.push({name:"trip_id",value:invoker.data("trip_id")});
@@ -272,15 +300,22 @@ $("#edittripModal").on("show.bs.modal",function(event){
     })
 
     //delete a trip
-    $("#deleteTrip").click(function(){
+    $("#deleteTrip").click(function(){ 
+        //show spinner
+        $("#spinner").show();
+        //hide results
+        $("#edittripmessage").hide();   
         //ajax call to to delete a trip
         $.ajax({
             url:"deletetrip.php",
             method:"POST",
             data:{trip_id:invoker.data("trip_id")},
             success:function(returnedData){
+                //hide spinner
+                $("#spinner").hide();
                 if(returnedData){
                     $("#edittripmessage").html("<div class='alert alert-danger'><strong>Trip not deleted. Try again.</strong></div>");
+                    $("#edittripmessage").slideDown();
                 }else{
                     $("#edittripModal").modal("hide");
                     getTrips();
@@ -289,6 +324,7 @@ $("#edittripModal").on("show.bs.modal",function(event){
             error: function(){
                 //ajax call fails: show ajax call error
                 $("#edittripmessage").html("<div class='alert alert-danger'><strong>Ajax call error</strong></div>");
+                $("#edittripmessage").slideDown();
             }
         });
     });
