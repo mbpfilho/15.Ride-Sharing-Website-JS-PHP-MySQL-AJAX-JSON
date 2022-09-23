@@ -128,7 +128,7 @@ if(mysqli_num_rows($result)==0){
     exit;
 }
 
-echo "<div class='alert alert-info'>From $departure to $destination.<br>Closest journeys:</div>";
+echo "<div class='alert alert-info journeysummary'>From $departure to $destination.<br>Closest journeys:</div>";
 
 echo "<div id='tripResults'>";
 

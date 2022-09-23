@@ -42,10 +42,10 @@ include("rememberme.php");
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/sunny/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" href="styling.css">
-
     <!-- google maps api script -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZr-cTvyLpSsWL7Q9Nlc-RTp1WTDkmJcs&libraries=places"></script>
+
+    <link rel="stylesheet" href="styling.css">
 
   </head>
   <body>

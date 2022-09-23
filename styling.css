@@ -64,10 +64,56 @@ body{
 }
 
 .profile{
-  height: auto;
+  max-height: 50px;
   max-width: 100%;
   border-radius: 50%;
 }
+
+#searchResults{
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+
+.driver{
+  font-size: 1.3em;
+  text-transform: capitalize;
+}
+
+.departure, .destination{
+  font-size: 1.3em;
+}
+
+.price{
+  font-size: 1.6em;
+}
+
+.perseat{
+  font-size: .7em;
+}
+
+.journey, .moreinfo{
+  text-align: left;
+}
+
+.time{
+  margin-top: 10px;
+}
+
+.journey2{
+  text-align: right;
+}
+
+.about{
+  border-top: 1px solid grey;
+  margin-top: 15px;
+  padding-top: 3px;
+}
+
+.journeysummary, .noresult{
+  text-align: left;
+  font-size: 1.3em;
+}
+
 
 /*Navigation bar*/
 .navbar-custom{

@@ -195,12 +195,12 @@ if($count==1){
                     </div>
 
                     <div class="checkbox checkbox-inline regular">
-                        <label for=""><input type="checkbox" name="sunday" id="sunday" value="1">Sunday</label>
-                        <label for=""><input type="checkbox" name="monday" id="monday" value="1">Monday</label>
-                        <label for=""><input type="checkbox" name="tuesday" id="tuesday" value="1">Tuesday</label>
-                        <label for=""><input type="checkbox" name="wednesday" id="wednesday" value="1">Wednesday</label>
-                        <label for=""><input type="checkbox" name="thursday" id="thursday" value="1">Thursday</label>
-                        <label for=""><input type="checkbox" name="friday" id="friday" value="1">Friday</label>
+                        <label for=""><input type="checkbox" name="sunday" id="sunday" value="1">Sunday . </label>
+                        <label for=""><input type="checkbox" name="monday" id="monday" value="1">Monday . </label>
+                        <label for=""><input type="checkbox" name="tuesday" id="tuesday" value="1">Tuesday . </label>
+                        <label for=""><input type="checkbox" name="wednesday" id="wednesday" value="1">Wednesday . </label>
+                        <label for=""><input type="checkbox" name="thursday" id="thursday" value="1">Thursday . </label>
+                        <label for=""><input type="checkbox" name="friday" id="friday" value="1">Friday . </label>
                         <label for=""><input type="checkbox" name="saturday" id="saturday" value="1">Saturday</label>
                     </div>
                     
@@ -263,12 +263,12 @@ if($count==1){
                     </div>
 
                     <div class="checkbox checkbox-inline regular2">
-                        <label for=""><input type="checkbox" name="sunday2" id="sunday2" value="1">Sunday</label>
-                        <label for=""><input type="checkbox" name="monday2" id="monday2" value="1">Monday</label>
-                        <label for=""><input type="checkbox" name="tuesday2" id="tuesday2" value="1">Tuesday</label>
-                        <label for=""><input type="checkbox" name="wednesday2" id="wednesday2" value="1">Wednesday</label>
-                        <label for=""><input type="checkbox" name="thursday2" id="thursday2" value="1">Thursday</label>
-                        <label for=""><input type="checkbox" name="friday2" id="friday2" value="1">Friday</label>
+                        <label for=""><input type="checkbox" name="sunday2" id="sunday2" value="1">Sunday . </label>
+                        <label for=""><input type="checkbox" name="monday2" id="monday2" value="1">Monday . </label>
+                        <label for=""><input type="checkbox" name="tuesday2" id="tuesday2" value="1">Tuesday . </label>
+                        <label for=""><input type="checkbox" name="wednesday2" id="wednesday2" value="1">Wednesday . </label>
+                        <label for=""><input type="checkbox" name="thursday2" id="thursday2" value="1">Thursday . </label>
+                        <label for=""><input type="checkbox" name="friday2" id="friday2" value="1">Friday . </label>
                         <label for=""><input type="checkbox" name="saturday2" id="saturday2" value="1">Saturday</label>
                     </div>
                     

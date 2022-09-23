@@ -118,6 +118,9 @@ function submitAddTripRequest(){
                 $("#addtripModal").modal('hide');
                 //reset form
                 $("#addtripForm")[0].reset();
+                //hide regular and one-off elements
+                $(".regular").hide();
+                $(".one-off").hide();
                 //load trips
                 getTrips();
             }
@@ -201,6 +204,9 @@ function submitEditTripRequest(){
                 $("#edittripModal").modal('hide');
                 //reset form
                 $("#edittripForm")[0].reset();
+                //hide regular and one-off elements
+                $(".regular2").hide();
+                $(".one-off2").hide();
                 //load trips
                 getTrips();
             }

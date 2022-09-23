@@ -130,7 +130,10 @@ function submitSearchRequest(){
         success:function(returnedData){
             $("#searchResults").html(returnedData);
             $("#tripResults").accordion({
-                
+                active: false,
+                collapsible:true,
+                heightStyle:"content",
+                icons:false
             })
         },
         error: function(){
